@@ -1,10 +1,10 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"app/ui",
-	"app/navigator",
-	"app/sound",
-	"signals"
+	"../app/shared",
+	"../app/ui",
+	"../app/navigator",
+	"../app/sound",
+	"../lib/signals"
 ],
 function ( $, _s, _ui, _navi, _snd, Signal ) {
 	

@@ -1,10 +1,10 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"app/utilities",
-	"hammer.custom",
-	"jquery.throttle-debounce.custom",
-	"jquery.stellar.custom"
+	"../app/shared",
+	"../app/utilities",
+	"../lib/hammer.custom",
+	"../lib/jquery.throttle-debounce.custom",
+	"../lib/jquery.stellar.custom"
 ],
 function ( $, _s, _utils ) {
 	

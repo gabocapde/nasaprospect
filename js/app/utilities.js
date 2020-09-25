@@ -1,7 +1,7 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"jquery.placeholdme"
+	"../app/shared",
+	"../lib/jquery.placeholdme"
 ],
 function ( $, _s ) {
 	

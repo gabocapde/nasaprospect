@@ -1,11 +1,11 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"app/utilities",
-	"app/navigator",
-	"hammer.custom",
-	"bootstrap",
-	"jquery.throttle-debounce.custom"
+	"../app/shared",
+	"../app/utilities",
+	"../app/navigator",
+	"../lib/hammer.custom",
+	"../lib/bootstrap",
+	"../lib/jquery.throttle-debounce.custom"
 ],
 function ( $, _s, _utils, _navi ) {
 	

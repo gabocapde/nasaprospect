@@ -41,3 +41,7 @@ build/config/buildinfo.properties
 
 # cloud9
 .c9revisions
+
+# dependencies
+/node_modules
+/dist

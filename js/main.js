@@ -12,9 +12,9 @@
 	require(
 	[
 		"jquery",
-		"app/shared",
-		"app/utilities",
-		"hammer.custom"
+		"./app/shared",
+		"./app/utilities",
+		"./lib/hammer.custom"
 	],
 	function ( $, _s, _utils ) {
 		
@@ -68,12 +68,12 @@
 			
 			require(
 			[
-				"app/ui",
-				"app/navigator",
-				"app/solarSystem",
-				"app/user",
-				"overthrow",
-				"RequestAnimationFrame"
+				"./app/ui",
+				"./app/navigator",
+				"./app/solarSystem",
+				"./app/user",
+				"./lib/overthrow",
+				"./lib/RequestAnimationFrame"
 			],
 			function ( _ui, _navi, _solarSystem, _user ) {
 				

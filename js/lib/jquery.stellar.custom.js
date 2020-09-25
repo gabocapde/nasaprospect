@@ -12,7 +12,7 @@
 
 define( [ 
 	"jquery",
-	"app/shared"
+	"../app/shared"
 ],
 function ( $, _s ) {
 

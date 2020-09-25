@@ -1,8 +1,8 @@
 define( [ 
 	"jquery",
-	"signals",
-	"jquery.easing",
-	"mdetect"
+	"../lib/signals",
+	"../lib/jquery.easing",
+	"../lib/mdetect"
 ],
 function ( $, Signal ) {
 	

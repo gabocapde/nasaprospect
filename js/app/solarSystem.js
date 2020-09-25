@@ -1,9 +1,9 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"app/sound",
-	"app/section",
-	"signals"
+	"../app/shared",
+	"../app/sound",
+	"../app/section",
+	"../lib/signals"
 ],
 function ( $, _s, _snd, _section, Signal ) {
 	

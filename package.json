@@ -1,0 +1,28 @@
+{
+  "name": "package",
+  "version": "1.0.0",
+  "description": "NASA: Prospect ========",
+  "private": "true",
+  "dependencies": {
+    "jquery": "^3.5.1",
+    "lodash": "^4.17.20"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-cli": "^3.3.12"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "webpack --config webpack.config.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/gabocapde/nasaprospect.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/gabocapde/nasaprospect/issues"
+  },
+  "homepage": "https://github.com/gabocapde/nasaprospect#readme"
+}

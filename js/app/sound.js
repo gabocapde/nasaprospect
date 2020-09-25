@@ -1,11 +1,11 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"app/utilities",
-	"signals",
-	"TweenMax",
-	"MobileRangeSlider",
-	"jquery.throttle-debounce.custom"
+	"../app/shared",
+	"../app/utilities",
+	"../lib/signals",
+	"../lib/TweenMax",
+	"../lib/MobileRangeSlider",
+	"../lib/jquery.throttle-debounce.custom"
 ],
 function ( $, _s, _utils, Signal ) {
 	

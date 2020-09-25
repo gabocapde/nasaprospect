@@ -1,13 +1,13 @@
 define( [ 
 	"jquery",
-	"app/shared",
-	"app/utilities",
-	"app/navigator",
-	"app/solarSystem",
-	"app/section",
-	"app/sound",
-	"jquery.imagesloaded",
-	"TweenMax"
+	"../app/shared",
+	"../app/utilities",
+	"../app/navigator",
+	"../app/solarSystem",
+	"../app/section",
+	"../app/sound",
+	"../lib/jquery.imagesloaded",
+	"../lib/TweenMax"
 ],
 function ( $, _s, _utils, _navi, _ss, _section, _snd ) {
 	

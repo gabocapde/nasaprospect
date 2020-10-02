@@ -8,7 +8,8 @@
 /*jshint curly: true, eqeqeq: true, noempty: true, strict: true, undef: true, browser: true */
 /*global jQuery: false */
 
-;(function($, undefined) {
+import $ from 'jquery';
+
 'use strict';
 
 // blank image data-uri bypasses webkit log warning (thx doug jones)
@@ -119,5 +120,3 @@ $.fn.imagesLoaded = function( callback ) {
 
 	return deferred ? deferred.promise( $this ) : $this;
 };
-
-})(jQuery);

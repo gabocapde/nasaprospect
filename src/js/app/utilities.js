@@ -1,9 +1,8 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../lib/jquery.placeholdme"
-],
-function ( $, _s ) {
+import placeholdme from '../lib/jquery.placeholdme';
+import $ from 'jquery';
+import _s from './shared';
+
+export default (function() {
 	
 	var _utils = {};
 	
@@ -820,4 +819,4 @@ function ( $, _s ) {
 	
 	return _utils;
 	
-} );
+})();

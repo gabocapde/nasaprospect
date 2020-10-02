@@ -1,13 +1,23 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../app/utilities",
-	"../app/navigator",
-	"../lib/hammer.custom",
-	"../lib/bootstrap",
-	"../lib/jquery.throttle-debounce.custom"
-],
-function ( $, _s, _utils, _navi ) {
+// define( [ 
+// 	"jquery",
+// 	"../app/shared",
+// 	"../app/utilities",
+// 	"../app/navigator",
+// 	"../lib/hammer.custom",
+// 	"../lib/bootstrap",
+// 	"../lib/jquery.throttle-debounce.custom"
+// ],
+// function ( $, _s, _utils, _navi ) {
+	
+import $ from 'jquery';
+import _s from './shared';
+import _utils from './utilities';
+import _navi from './navigator';
+import hammerjs from 'hammerjs';
+import { debounce } from 'throttle-debounce';
+import bootstrap from 'bootstrap';
+
+export default (function() {
 	
 	var _de = _s.domElements;
 	var _ui = {};
@@ -20,7 +30,7 @@ function ( $, _s, _utils, _navi ) {
 	
 	// resize
 	
-	_de.$window.on( 'resize', $.debounce( _s.throttleTimeMedium, OnWindowResized ) );
+	_de.$window.on( 'resize', debounce( _s.throttleTimeMedium, OnWindowResized ) );
 	
 	/*===================================================
 	
@@ -97,4 +107,4 @@ function ( $, _s, _utils, _navi ) {
 	
 	return _ui;
 	
-} );
+})();

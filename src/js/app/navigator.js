@@ -1,12 +1,19 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../app/utilities",
-	"../lib/hammer.custom",
-	"../lib/jquery.throttle-debounce.custom",
-	"../lib/jquery.stellar.custom"
-],
-function ( $, _s, _utils ) {
+// define( [ 
+// 	"jquery",
+// 	"../app/shared",
+// 	"../app/utilities",
+// 	"../lib/hammer.custom",
+// 	"../lib/jquery.throttle-debounce.custom",
+// 	"../lib/jquery.stellar.custom"
+// ],
+import $ from 'jquery';
+import _s from './shared';
+import _utils from './utilities';
+import hammerjs from 'hammerjs';
+import { throttle } from 'throttle-debounce';
+import stellar from '../lib/jquery.stellar.custom';
+
+export default (function() {
 	
 	var _de = _s.domElements;
 	var _navi = {};
@@ -62,9 +69,9 @@ function ( $, _s, _utils ) {
 	_de.$middlegrounds.attr( "data-stellar-ratio", _s.parallaxMiddleground );
 	_de.$backgrounds.attr( "data-stellar-ratio", _s.parallaxBackground );
 	
-	var ThrottledScroll = $.throttle( _s.throttleTimeMedium, Scroll );
-	var ThrottledCheckTriggers = $.throttle( _s.throttleTimeMedium, CheckTriggers );
-	var ThrottledDrag = $.throttle( _s.throttleTimeShort, Drag );
+	var ThrottledScroll = throttle( _s.throttleTimeMedium, Scroll );
+	var ThrottledCheckTriggers = throttle( _s.throttleTimeMedium, CheckTriggers );
+	var ThrottledDrag = throttle( _s.throttleTimeShort, Drag );
 	var stellarParameters = {
 		horizontalScrolling: false,
 		parallaxBackgrounds: false,
@@ -94,10 +101,10 @@ function ( $, _s, _utils ) {
 				_$parallaxContainer = _$navi;
 				
 		}
-		
+
 		if ( _s.lowPerformance !== true ) {
-				
-				_$parallaxContainer.stellar( stellarParameters );
+
+				stellar( stellarParameters );
 				
 				_s.signals.onLowPerformanceMode.addOnce( function () {
 						
@@ -108,8 +115,8 @@ function ( $, _s, _utils ) {
 		}
 		
 		_s.signals.onForceHighPerformance.addOnce( function () {
-				
-				_$parallaxContainer.stellar( stellarParameters );
+
+				stellar( stellarParameters );
 				
 		} );
 		
@@ -1164,4 +1171,4 @@ function ( $, _s, _utils ) {
 	
 	return _navi;
 	
-} );
+})();

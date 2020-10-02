@@ -1,13 +1,21 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../app/ui",
-	"../app/navigator",
-	"../app/sound",
-	"../lib/signals"
-],
-function ( $, _s, _ui, _navi, _snd, Signal ) {
-	
+// define( [ 
+// 	"jquery",
+// 	"../app/shared",
+// 	"../app/ui",
+// 	"../app/navigator",
+// 	"../app/sound",
+// 	"../lib/signals"
+// ],
+// function ( $, _s, _ui, _navi, _snd, Signal ) {
+import $ from 'jquery';
+import _s from './shared';
+import _ui from './ui';
+import _navi from './navigator';
+import _snd from './sound';
+import Signal from 'signals';
+
+export default (function() {
+		
 	var _de = _s.domElements;
 	var _section = {};
 	var _sectionCount = 0;
@@ -244,4 +252,4 @@ function ( $, _s, _ui, _navi, _snd, Signal ) {
 	
 	return _section;
 	
-} );
+})();

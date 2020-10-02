@@ -1,11 +1,9 @@
-define( [ 
-	"jquery",
-	"../lib/signals",
-	"../lib/jquery.easing",
-	"../lib/mdetect"
-],
-function ( $, Signal ) {
-	
+import $ from 'jquery';
+import Signal from 'signals';
+import easing from 'jquery.easing';
+import mdetect from 'mdetect';
+
+export default (function() {
 	var _s = {};
 	
 	/*===================================================
@@ -129,8 +127,8 @@ function ( $, Signal ) {
 	support
 	
 	=====================================================*/
-	
-	_s.mobile = DetectTierIphone() || DetectTierTablet();
+
+	_s.mobile = mdetect.isIOS() || mdetect.isTabletView();
 	_s.unsupported = _de.$html.hasClass( 'lt-ie9' )
 		|| !_de.$html.hasClass( 'fontface' )
 		|| !_de.$html.hasClass( 'backgroundsize' )
@@ -176,4 +174,4 @@ function ( $, Signal ) {
 	
 	return _s;
 	
-} );
+})();

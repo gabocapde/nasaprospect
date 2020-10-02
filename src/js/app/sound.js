@@ -1,14 +1,23 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../app/utilities",
-	"../lib/signals",
-	"../lib/TweenMax",
-	"../lib/MobileRangeSlider",
-	"../lib/jquery.throttle-debounce.custom"
-],
-function ( $, _s, _utils, Signal ) {
-	
+// define( [ 
+// 	"jquery",
+// 	"../app/shared",
+// 	"../app/utilities",
+// 	"../lib/signals",
+// 	"../lib/TweenMax",
+// 	"../lib/MobileRangeSlider",
+// 	"../lib/jquery.throttle-debounce.custom"
+// ],
+// function ( $, _s, _utils, Signal ) {
+import $ from 'jquery';
+import _s from '../app/shared';
+import _utils from '../app/utilities';
+import Signal from 'signals';
+import TweenMax from '../lib/TweenMax';
+import MobileRangeSlider from '../lib/MobileRangeSlider';
+import { throttle } from 'throttle-debounce';
+
+export default (function() {
+		
 	var _de = _s.domElements;
 	var _snd = {
 		options: {
@@ -52,7 +61,7 @@ function ( $, _s, _utils, Signal ) {
 					
 					sliderAPI = $slider.data( 'sliderAPI' );
 					
-					if ( sliderAPI instanceof MobileRangeSlider ) {
+					if ( sliderAPI instanceof window.MobileRangeSlider ) {
 						
 						sliderAPI.setValue( _volume );
 						
@@ -87,12 +96,11 @@ function ( $, _s, _utils, Signal ) {
 		var sliderAPI;
 		
 		if ( $slider.length > 0 ) {
-			
-			sliderAPI = new MobileRangeSlider( $slider.get( 0 ), {
+			sliderAPI = new window.MobileRangeSlider( $slider.get( 0 ), {
 				min: 0,
 				max: 100,
 				value: _volume,
-				change: $.throttle( _s.throttleTimeLong, function( volume ){
+				change: throttle( _s.throttleTimeLong, function( volume ){
 					
 					if ( _volume !== volume ) {
 						
@@ -210,7 +218,7 @@ function ( $, _s, _utils, Signal ) {
 		
 		if ( this.options.descendents === true ) {
 			
-			$elements = this.$element = $elements.find( "[data-sounds]" ).andSelf();
+			$elements = this.$element = $elements.find( "[data-sounds]" ).addBack();
 			
 		}
 		
@@ -926,8 +934,8 @@ function ( $, _s, _utils, Signal ) {
 						}
 						
 					}
-					
-					this.tween = TweenMax.to( this, parameters.duration, parameters );
+
+					this.tween = window.TweenMax.to( this, parameters.duration, parameters );
 					
 				}
 				
@@ -1206,7 +1214,7 @@ function ( $, _s, _utils, Signal ) {
 				
 				handlers = [];
 				
-				for ( i = 0, il = indices.length; i < il; i++ ) {
+				for ( var i = 0, il = indices.length; i < il; i++ ) {
 					
 					handlers.push( _handlers[ indices[ i ] ] );
 					
@@ -1292,4 +1300,4 @@ function ( $, _s, _utils, Signal ) {
 	
 	return _snd;
 	
-} );
+})();

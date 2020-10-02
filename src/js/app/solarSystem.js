@@ -1,12 +1,19 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../app/sound",
-	"../app/section",
-	"../lib/signals"
-],
-function ( $, _s, _snd, _section, Signal ) {
-	
+// define( [ 
+// 	"jquery",
+// 	"../app/shared",
+// 	"../app/sound",
+// 	"../app/section",
+// 	"../lib/signals"
+// ],
+// function ( $, _s, _snd, _section, Signal ) {
+import $ from 'jquery';
+import _s from '../app/shared';
+import _snd from '../app/sound';
+import _section from '../app/section';
+import Signal from 'signals';
+
+export default (function() {
+		
 	var _de = _s.domElements;
 	var _solarSystem = {};
 	var _$element = _de.$solarSystem;
@@ -106,4 +113,4 @@ function ( $, _s, _snd, _section, Signal ) {
 	
 	return _solarSystem;
 	
-} );
+})();

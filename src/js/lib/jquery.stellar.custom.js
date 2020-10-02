@@ -10,12 +10,11 @@
  * Made modular and hooks into app's main update loop
  */
 
-define( [ 
-	"jquery",
-	"../app/shared"
-],
-function ( $, _s ) {
+import $ from 'jquery';
+import _s from '../app/shared';
 
+export default function Ui() {
+	
 	var pluginName = 'stellar',
 		pluginCount = 0,
 		defaults = {
@@ -76,17 +75,19 @@ function ( $, _s ) {
 		},
 
 		vendorPrefix = (function() {
-			var prefix = '';
+			// $.browser is deprecated
+			var prefix = '-webkit-';
 
-			if ($.browser.webkit) {
-				prefix = '-webkit-';
-			} else if ($.browser.mozilla) {
-				prefix = '-moz-';
-			} else if ($.browser.opera) {
-				prefix = '-o-';
-			} else if ($.browser.msie) {
-				prefix = '-ms-';
-			}
+
+			// if ($.browser.webkit) {
+			// 	prefix = '-webkit-';
+			// } else if ($.browser.mozilla) {
+			// 	prefix = '-moz-';
+			// } else if ($.browser.opera) {
+			// 	prefix = '-o-';
+			// } else if ($.browser.msie) {
+			// 	prefix = '-ms-';
+			// }
 
 			return prefix;
 		}()),
@@ -224,7 +225,7 @@ function ( $, _s ) {
 
 			// Fix for WebKit background rendering bug
 			if (navigator.userAgent.indexOf('WebKit') > 0) {
-				$(window).load(function(){
+				$(window).on("load", function(){
 					var oldLeft = self._getScrollLeft(),
 						oldTop = self._getScrollTop();
 
@@ -663,4 +664,4 @@ function ( $, _s ) {
 	
 	return Plugin;
 	
-} );
+};

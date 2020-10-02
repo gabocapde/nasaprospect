@@ -1,16 +1,27 @@
-define( [ 
-	"jquery",
-	"../app/shared",
-	"../app/utilities",
-	"../app/navigator",
-	"../app/solarSystem",
-	"../app/section",
-	"../app/sound",
-	"../lib/jquery.imagesloaded",
-	"../lib/TweenMax"
-],
-function ( $, _s, _utils, _navi, _ss, _section, _snd ) {
-	
+// define( [ 
+// 	"jquery",
+// 	"../app/shared",
+// 	"../app/utilities",
+// 	"../app/navigator",
+// 	"../app/solarSystem",
+// 	"../app/section",
+// 	"../app/sound",
+// 	"../lib/jquery.imagesloaded",
+// 	"../lib/TweenMax"
+// ],
+// function ( $, _s, _utils, _navi, _ss, _section, _snd ) {
+import $ from 'jquery';
+import _s from './shared';
+import _utils from './utilities';
+import _navi from './navigator';
+import _ss from './solarSystem';
+import _section from './section';
+import _snd from './sound';
+import imagesloaded from '../lib/jquery.imagesloaded';
+import TweenMax from '../lib/TweenMax';
+
+export default (function() {
+		
 	var _de = _s.domElements;
 	var _user = { ready: false };
 	var _findables = {};
@@ -977,4 +988,4 @@ function ( $, _s, _utils, _navi, _ss, _section, _snd ) {
 	
 	return _user;
 	
-} );
+})();

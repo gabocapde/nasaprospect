@@ -1,10 +1,10 @@
 import $ from 'jquery';
-// import _s from '../app/shared';
+import _s from '../app/shared';
 // import _snd from '../app/sound';
 import _section from '../app/section';
 import Signal from 'signals';
 
-export default import(/* webpackChunkName: "shared" */ './shared').then(({ default: _s }) =>{
+// export default import(/* webpackChunkName: "shared" */ './shared').then(({ default: _s }) =>{
 	var _de = _s.domElements;
 	var _solarSystem = {};
 	var _$element = _de.$solarSystem;
@@ -106,5 +106,5 @@ export default import(/* webpackChunkName: "shared" */ './shared').then(({ defau
 	_solarSystem.SetActiveSection = SetActiveSection;
 	_solarSystem.GetActiveSection = GetActiveSection;
 
-	return _solarSystem;
-}).catch(error => 'An error occurred while loading the component')
+	export default _solarSystem;
+// }).catch(error => 'An error occurred while loading the component')

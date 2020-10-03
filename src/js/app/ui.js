@@ -10,97 +10,99 @@
 // function ( $, _s, _utils, _navi ) {
 	
 import $ from 'jquery';
-import _s from './shared';
+// import _s from './shared';
 import _utils from './utilities';
-import _navi from './navigator';
+// import _navi from './navigator';
 import hammerjs from 'hammerjs';
 import { debounce } from 'throttle-debounce';
 import bootstrap from 'bootstrap';
 	
-var _de = _s.domElements;
-var _ui = {};
+export default import(/* webpackChunkName: "shared" */ './shared').then(({ default: _s }) =>{
+	var _de = _s.domElements;
+	var _ui = {};
 
-/*===================================================
+	/*===================================================
 
-init
+	init
 
-=====================================================*/
+	=====================================================*/
 
-// resize
+	// resize
 
-_de.$window.on( 'resize', debounce( _s.throttleTimeMedium, OnWindowResized ) );
+	_de.$window.on( 'resize', debounce( _s.throttleTimeMedium, OnWindowResized ) );
 
-/*===================================================
+	/*===================================================
 
-events
+	events
 
-=====================================================*/
+	=====================================================*/
 
-function OnWindowResized () {
-	
-	_s.w = _de.$window.width();
-	_s.h = _de.$window.height();
-	
-	// fill container elements to match screen height
-	
-	_de.$containerFill.css( "height", _s.h );
-	
-	// handle type size by screen size
-	
-	_de.$body.css( 'font-size', _utils.Clamp( Math.min( _s.w / _s.wBase, _s.h / _s.hBase ), _s.fontSizeMin, _s.fontSizeMax ) * 100 + "%" );
-	
-	// keep nav at correct width
-	
-	var $items = _de.$navPlanets.find( 'li' );
-	var navHeight = _de.$navPlanets.height();
-	var numItems = $items.length;
-	var heightPerItem = navHeight / numItems;
-	
-	_de.$navbarPlanets.css( 'width', heightPerItem );
-	
-	// signal
-	
-	_s.signals.onResized.dispatch( _s.w, _s.h );
-	
-	// refresh scroll panes
-	
-	OnContentChanged();
-	
-}
-
-function OnContentChanged ( changed ) {
-	
-	var $changed = $( changed );
-	var $scrollable;
-	
-	if ( $changed.length > 0 ) {
+	function OnWindowResized () {
 		
-		$scrollable = _de.$scrollable.has( $changed );
+		_s.w = _de.$window.width();
+		_s.h = _de.$window.height();
+		
+		// fill container elements to match screen height
+		
+		_de.$containerFill.css( "height", _s.h );
+		
+		// handle type size by screen size
+		
+		_de.$body.css( 'font-size', _utils.Clamp( Math.min( _s.w / _s.wBase, _s.h / _s.hBase ), _s.fontSizeMin, _s.fontSizeMax ) * 100 + "%" );
+		
+		// keep nav at correct width
+		
+		var $items = _de.$navPlanets.find( 'li' );
+		var navHeight = _de.$navPlanets.height();
+		var numItems = $items.length;
+		var heightPerItem = navHeight / numItems;
+		
+		_de.$navbarPlanets.css( 'width', heightPerItem );
+		
+		// signal
+		
+		_s.signals.onResized.dispatch( _s.w, _s.h );
+		
+		// refresh scroll panes
+		
+		OnContentChanged();
 		
 	}
-	else {
+
+	function OnContentChanged ( changed ) {
 		
-		$scrollable = _de.$scrollable;
+		var $changed = $( changed );
+		var $scrollable;
+		
+		if ( $changed.length > 0 ) {
+			
+			$scrollable = _de.$scrollable.has( $changed );
+			
+		}
+		else {
+			
+			$scrollable = _de.$scrollable;
+			
+		}
+		
+		// update section parts
+		
+		_de.$orbits = _de.$sections.find( ".orbit" );
+		_de.$lands = _de.$sections.find( ".land" );
+		_de.$explores = _de.$sections.find( ".explore" );
+		
+		_s.signals.onContentRefreshed.dispatch();
 		
 	}
-	
-	// update section parts
-	
-	_de.$orbits = _de.$sections.find( ".orbit" );
-	_de.$lands = _de.$sections.find( ".land" );
-	_de.$explores = _de.$sections.find( ".explore" );
-	
-	_s.signals.onContentRefreshed.dispatch();
-	
-}
 
-/*===================================================
+	/*===================================================
 
-public
+	public
 
-=====================================================*/
+	=====================================================*/
 
-_ui.OnWindowResized = OnWindowResized;
-_ui.OnContentChanged = OnContentChanged;
+	_ui.OnWindowResized = OnWindowResized;
+	_ui.OnContentChanged = OnContentChanged;
 
-export default _ui;
+	return _ui;
+}).catch(error => 'An error occurred while loading the component')
